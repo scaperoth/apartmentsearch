@@ -1,5 +1,13 @@
-<h1>New Apartment</h1>
 
-<%= render 'form', apartment: @apartment %>
 
-<%= link_to 'Back', apartments_path %>
+<div class="col-md-6 col-sm-offset-3">
+  <h1 class="text-center">New Apartment</h1>
+    <div class="row">
+        <%= render 'form', apartment: @apartment %>
+    </div>
+    <br>
+    <div class="row">
+        <%= link_to 'Cancel', apartments_path, class: "text-danger" %>
+    </div>
+    <br>
+</div>

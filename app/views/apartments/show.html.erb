@@ -1,4 +1,29 @@
 <p id="notice"><%= notice %></p>
 
+<div class="fieldset">
+            <dl>
+                <dt class="label label-default"><%= Apartment.human_attribute_name(:address) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @apartment.address %></pre>
+                </dd>
+                <dt class="label label-default"><%= Apartment.human_attribute_name(:url) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @apartment.url %></pre>
+                </dd>
+                <dt class="label label-default"><%= Apartment.human_attribute_name(:img) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @apartment.img %></pre>
+                </dd>
+                <dt class="label label-default"><%= Apartment.human_attribute_name(:email_sent) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @apartment.email_sent %></pre>
+                </dd>
+                <dt class="label label-default"><%= Apartment.human_attribute_name(:viewing_date) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @apartment.viewing_date %></pre>
+                </dd>
+            </dl>
+        </div>
+
 <%= link_to 'Edit', edit_apartment_path(@apartment) %> |
 <%= link_to 'Back', apartments_path %>

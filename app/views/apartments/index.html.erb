@@ -1,7 +1,115 @@
-<p id="notice"><%= notice %></p>
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-2">
+                <div class="header-content">
+                    <div class="header-content-inner">
+                        <h1>Helping Matt and Audrey find an apartment since 2017.
+                        </h1>
+                        <a href="#apartments" class="btn btn-outline btn-xl page-scroll">Get started!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="earth-container">
+                    <div class="sidebg earth">
+                        <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                        <%= image_tag 'earth-bg.png', class: 'img-responsive' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
 
-<h1>Apartments</h1>
+<section id="apartments">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="section-heading">
+                <h2>Places We've Tried</h2>
+                <p class="text-muted">Zillow, Trulia, HotPads, Craigslist, etc.</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <br>
+                    <% if @apartments.empty? %>
 
+                    <p class="text-center">No apartments found yet. Get started by
+                        <%= link_to 'creating a new Apartment', new_apartment_path %></p>
+
+                <% else %>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><%= Apartment.human_attribute_name(:address) %></th>
+                                    <th><%= Apartment.human_attribute_name(:img) %></th>
+                                    <th><%= Apartment.human_attribute_name(:email_sent) %></th>
+                                    <th><%= Apartment.human_attribute_name(:viewing_date) %></th>
+                                    <th><%= Apartment.human_attribute_name(:updated_at) %></th>
+                                    <th><%= Apartment.human_attribute_name(:created_at) %></th>
+                                    <th class="uk-hidden-small"><%=t '.actions', :default => t("helpers.actions") %></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% @apartments.each do |apartment| %>
+                                <tr>
+                                    <td><%= link_to apartment.address, apartment.img %></td>
+                                    <td><%= link_to "Link", apartment.url %></td>
+                                    <td><%= apartment.email_sent %></td>
+                                    <td><%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p') %></td>
+                                    <td><%= apartment.updated_at.strftime('%D') %></td>
+                                    <td><%= apartment.created_at.strftime('%D') %></td>
+                                    <td><%= link_to apartment do %>
+
+                                        <i class="icon-eye text-primary"></i>
+                                        <% end %> 
+                                        <%= link_to edit_apartment_path(apartment) do %>
+                                        <i class="icon-pencil text-primary"></i>
+
+                                        <% end %>
+                                        <%= link_to apartment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+
+                                        <i class="icon-close text-primary"></i>
+                                        <% end %>
+                                    </td>
+                                </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+
+                    <%= link_to 'New Apartment', new_apartment_path %>
+
+                    <i class="icon-plus text-primary"></i>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- 
+<section class="cta">
+<div class="cta-content">
+    <div class="container">
+        <h2>Stop waiting.<br>Start building.</h2>
+        <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+    </div>
+</div>
+<div class="overlay"></div>
+</section> -->
+
+<!-- 
 <table>
   <thead>
     <tr>
@@ -22,4 +130,4 @@
 
 <br>
 
-<%= link_to 'New Apartment', new_apartment_path %>
+<%= link_to 'New Apartment', new_apartment_path %> -->

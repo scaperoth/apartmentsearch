@@ -31,7 +31,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'materialize-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem "font-awesome-rails"
+gem 'simple-line-icons-rails'
+gem 'simple_form'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.easing.min
 //= require turbolinks
-//= require materialize-sprockets
+//= require tether
+//= require bootstrap
+//= require newage
 //= require_tree .

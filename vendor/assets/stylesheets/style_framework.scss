@@ -1,1 +1,13 @@
-@import "materialize";
+/*
+ * This file holds all of the styles for external css 
+ * frameworks like bootstrap, foundation, pure and materialize
+ */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "font-awesome";
+ @import "devicemockups";
+ @import "simple-line-icons";
+ @import "newage";
+ 

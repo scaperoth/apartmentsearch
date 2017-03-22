@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Apartmentsearch</title>
+        <title>M&amp;A Apartment Search</title>
         <%= csrf_meta_tags %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%=  stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Lato' %>
+        <%=  stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900' %>
+        <%=  stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Muli' %>
     </head>
 
-    <body>
-        <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo">Logo</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="#">Navbar Link</a>
-                    </li>
-                </ul>
+    <body id="page-top">
+        <%= render partial: '/elements/navbar' %>
+        <!-- end navigation  -->
+        <% if homepage? %>
 
-                <ul id="nav-mobile" class="side-nav">
-                    <li>
-                        <a href="#">Navbar Link</a>
-                    </li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse">
-                    <i class="material-icons">menu</i>
-                </a>
-            </div>
-        </nav>
-
+        <%= yield %>
+    <% else %>
         <div class="container">
-            <div class="section">
+            <section>
                 <%= yield %>
-            </div>
+            </section>
         </div>
+        <% end %>
+
+        <!-- end content  -->
+
+        <footer>
+            <%= render partial: '/elements/footer' %>
+        </footer>
+        <!-- end footer  -->
+
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </body>
 </html>
