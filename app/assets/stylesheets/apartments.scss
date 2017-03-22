@@ -1,26 +1,135 @@
 // Place all the styles related to the apartments controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.navbar.navbar-inverse{
-  background: transparent;
-  color:#444;
-  border-bottom: none;
+// You can use Sass (SCSS) here: http://sass-lang.com
+/* GLOBAL */
+html {
+    height: 100%;
 }
 
-.earth-container{
-  height:100vh;
+body {}
+
+.text-primary {
+    color: $primary-color;
 }
-.sidebg.earth{
-  position:absolute;
-  bottom:0vh;
-  width:60vw;
-  right:0vw;
-  
+
+a {
+    color: $link-color;
 }
-.text-primary{
-  color:#7b4397;
-  
+
+.no-padding {
+    padding: 0 !important;
 }
-a{
-  color:#7b4397;
+
+.no-bottom-padding {
+    padding-bottom: 0 !important;
+}
+
+.no-top-padding {
+    padding-top: 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0 !important;
+}
+
+.no-top-margin {
+    margin-top: 0 !important;
+}
+
+.extra-margin-bottom {
+    margin-bottom: 30px;
+}
+/* NAVBAR */
+.navbar.navbar-inverse {
+    background: transparent;
+    color: #444;
+    border-bottom: none;
+}
+
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #000;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+/* PRIMARY CONTENT */
+.primary-content {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -88px;
+    /* the bottom margin is the negative value of the footer's height */
+}
+/* HEADER */
+header .header-content .header-content-inner h1 {
+    font-size: 10vw;
+}
+
+.earth-container {
+    height: 100vh;
+}
+
+.sidebg.earth {
+    position: absolute;
+    bottom: 0;
+    max-width: 1300px;
+    width: 60vw;
+    right: 0;
+}
+/* FOOTER */
+.footer,
+.push {
+    height: 88px;
+    /* .push must be the same height as .footer */
+}
+
+.footer,
+footer {
+    background: #222222;
+    height: 88px;
+}
+/* FORMS */
+.form-title {
+    line-height: 12px;
+}
+/* APARTMENT IMAGES */
+.apartment-image {
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+    margin: 0;
+
+    &.form {
+        height: 400px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.box {
+    border-bottom:1px solid #ccc;
+    p {
+        margin: 0;
+    }
+    
+}
+/* MEDIUM SCREENS */
+@media (min-width: 768px) {
+    header .header-content .header-content-inner h1 {
+        font-size: 3vw;
+    }
+}
+/* LARGE SCREENS */
+@media (min-width:1200px) {
+    .container {
+        width: 1270px;
+    }
 }

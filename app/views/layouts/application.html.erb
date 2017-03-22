@@ -13,16 +13,20 @@
     <body id="page-top">
         <%= render partial: '/elements/navbar' %>
         <!-- end navigation  -->
-        <% if homepage? %>
 
-        <%= yield %>
-    <% else %>
-        <div class="container">
-            <section>
-                <%= yield %>
-            </section>
+        <div class="primary-content">
+            <% if homepage? %>
+
+            <%= yield %>
+        <% else %>
+            <div class="container clear-top">
+                <section>
+                    <%= yield %>
+                </section>
+            </div>
+            <% end %>
+            <div class="push"></div>
         </div>
-        <% end %>
 
         <!-- end content  -->
 
