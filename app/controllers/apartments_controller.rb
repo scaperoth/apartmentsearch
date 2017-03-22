@@ -4,7 +4,7 @@ require 'open-uri'
 class ApartmentsController < ApplicationController
     before_action :authenticate_user!, only: [:show]
     before_filter only: [:edit, :update, :destroy] do
-      flash[:notice] = "You do not have permission to access this page."
+        flash[:notice] = 'You do not have permission to access this page.'
         redirect_to :new_user_session unless current_user && current_user.admin?
     end
     before_action :set_apartment, only: [:show, :edit, :update, :destroy]
@@ -84,7 +84,7 @@ class ApartmentsController < ApplicationController
 
         if remote_file_exists? imgurl
 
-            filename = Rails.root.join('app', 'assets', 'images', 'apartment_images', sanitize_filename(params[:apartment][:address]) + '.png')
+            filename = Rails.root.join('public', 'apartment_images', sanitize_filename(params[:apartment][:address]) + '.png')
 
             open(filename, 'wb') do |file|
                 file << open(imgurl).read
