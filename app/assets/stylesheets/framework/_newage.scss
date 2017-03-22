@@ -128,9 +128,9 @@ p {
     width: 100%;
     min-height: auto;
     overflow-y: hidden;
-    background: url(../assets/#{$pattern-overlay}), $primary-color;
-    background: url(../assets/#{$pattern-overlay}), -webkit-linear-gradient(to left, $secondary-color, $primary-color);
-    background: url(../assets/#{$pattern-overlay}), linear-gradient(to left, $secondary-color, $primary-color);
+    background: url(#{$pattern-overlay}), $primary-color;
+    background: url(#{$pattern-overlay}), -webkit-linear-gradient(to left, $secondary-color, $primary-color);
+    background: url(#{$pattern-overlay}), linear-gradient(to left, $secondary-color, $primary-color);
     color: #fff;
 }
 header .header-content {

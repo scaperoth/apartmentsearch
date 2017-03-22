@@ -24,5 +24,8 @@
 
 $(function() {
 
-
+    $('#masonry-container').masonry({
+      itemSelector: '.box',
+      gutterWidth: 1
+    });
 });

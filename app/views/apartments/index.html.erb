@@ -44,12 +44,17 @@
                 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 
                     <% @apartments.each do |apartment| %>
-                    <div class="box col-sm-4 col-xs-12">
+                    <div class="box col3">
                         <%= link_to apartment do %>
                         <div class="apartment-image" style="background-image: url(<%= asset_path('assets/apartment_images/'+apartment.img) %>)"></div>
                         <% end %>
                         <p class="text-muted">
+                            <%= link_to apartment.url, target: '_blank' do %>
                             <small><%= apartment.address %></small>
+                            <% end %>
+                        </p>
+                        <p class="text-muted">
+                            <small><%= number_to_currency apartment.price  %></small>
                         </p>
                         <p class="text-muted">
                             <small>Sent email?
@@ -58,6 +63,12 @@
                         <% if apartment.viewing_date.present? %>
                         <p class="text-muted">
                             <small><%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p')  %></small>
+                        </p>
+                        <% end %>
+
+                        <% if apartment.notes.present? %>
+                        <p class="text-muted">
+                            <small><%= apartment.notes.html_safe  %></small>
                         </p>
                         <% end %>
                     </div>
@@ -83,6 +94,7 @@
                                     <tr>
                                         <th><%= Apartment.human_attribute_name(:address) %></th>
                                         <th><%= Apartment.human_attribute_name(:img) %></th>
+                                        <th><%= Apartment.human_attribute_name(:price) %></th>
                                         <th><%= Apartment.human_attribute_name(:email_sent) %></th>
                                         <th><%= Apartment.human_attribute_name(:viewing_date) %></th>
                                         <th><%= Apartment.human_attribute_name(:updated_at) %></th>
@@ -96,6 +108,7 @@
                                     <tr>
                                         <td><%= link_to apartment.address, apartment.url, target: '_blank' %></td>
                                         <td><%= link_to "Link", asset_path('assets/apartment_images/'+apartment.img), target: '_blank' %></td>
+                                        <td><%= number_to_currency apartment.price %></td>
                                         <td><%= apartment.email_sent %></td>
                                         <td>
                                             <% if apartment.viewing_date.present? %>

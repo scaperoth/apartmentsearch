@@ -93,7 +93,7 @@ class ApartmentsController < ApplicationController
             params[:apartment][:img] = filename.basename.to_s
         end
 
-        params.fetch(:apartment, {}).permit(:address, :url, :img, :email_sent, :viewing_date)
+        params.fetch(:apartment, {}).permit(:address, :url, :img, :email_sent, :viewing_date, :notes, :price)
     end
 
     # http://stackoverflow.com/questions/1939333/how-to-make-a-ruby-string-safe-for-a-filesystem

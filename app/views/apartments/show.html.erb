@@ -7,12 +7,16 @@
 
 <%= link_to @apartment.url, target: '_blank' do %>
 <div class="apartment-image form" style="background-image: url(<%= asset_path('assets/apartment_images/'+@apartment.img) %>)"></div>
-<% end %> 
+<% end %>
 <div class="fieldset">
             <dl>
                 <dt class="label label-default"><%= Apartment.human_attribute_name(:address) %></dt>
                 <dd>
                     <pre class="prettyprint"><%= @apartment.address %></pre>
+                </dd>
+                <dt class="label label-default"><%= Apartment.human_attribute_name(:price) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @apartment.price %></pre>
                 </dd>
                 <dt class="label label-default"><%= Apartment.human_attribute_name(:url) %></dt>
                 <dd>
@@ -30,10 +34,14 @@
                 <dd>
                     <pre class="prettyprint"><%= @apartment.viewing_date %></pre>
                 </dd>
+                <dt class="label label-default"><%= Apartment.human_attribute_name(:notes) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @apartment.notes %></pre>
+                </dd>
             </dl>
         </div>
 <br>
-<% if current_user.admin? %> 
+<% if current_user.admin? %>
 <%= link_to 'Edit', edit_apartment_path(@apartment) %> |
 <% end %>
 <%= link_to 'Back', apartments_path %>
