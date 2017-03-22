@@ -2,8 +2,12 @@
 require 'open-uri'
 
 class ApartmentsController < ApplicationController
+    before_action :authenticate_user!, only: [:show]
+    before_filter only: [:edit, :update, :destroy] do
+      flash[:notice] = "You do not have permission to access this page."
+        redirect_to :new_user_session unless current_user && current_user.admin?
+    end
     before_action :set_apartment, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
 
     # GET /apartments
     # GET /apartments.json

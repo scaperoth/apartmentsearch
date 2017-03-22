@@ -87,9 +87,7 @@
                                         <th><%= Apartment.human_attribute_name(:viewing_date) %></th>
                                         <th><%= Apartment.human_attribute_name(:updated_at) %></th>
                                         <th><%= Apartment.human_attribute_name(:created_at) %></th>
-                                        <% if current_user.admin? %>
                                         <th class="uk-hidden-small"><%=t '.actions', :default => t("helpers.actions") %></th>
-                                        <% end %>
                                     </tr>
                                 </thead>
 
@@ -108,11 +106,12 @@
                                         <td><%= apartment.updated_at.strftime('%D') %></td>
                                         <td><%= apartment.created_at.strftime('%D') %></td>
 
-                                        <% if current_user.admin? %>
                                         <td><%= link_to apartment do %>
 
                                             <i class="icon-eye text-primary"></i>
                                             <% end %>
+
+                                            <% if current_user.admin? %>
                                             <%= link_to edit_apartment_path(apartment) do %>
                                             <i class="icon-pencil text-primary"></i>
 
@@ -120,9 +119,10 @@
                                             <%= link_to apartment, method: :delete, data: { confirm: 'Are you sure?' } do %>
 
                                             <i class="icon-close text-primary"></i>
+
+                                            <% end %>
                                             <% end %>
                                         </td>
-                                        <% end %>
                                     </tr>
                                     <% end %>
                                 </tbody>

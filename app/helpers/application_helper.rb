@@ -4,4 +4,5 @@ module ApplicationHelper
     current_page?(root_path) || current_page?('/apartments')
   end 
   
+  
 end
