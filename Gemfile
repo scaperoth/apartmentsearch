@@ -41,6 +41,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
+gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+
 # authentication
 gem 'devise'
 
