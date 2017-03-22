@@ -6,7 +6,7 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to @apartment.url, target: '_blank' do %>
-<div class="apartment-image form" style="background-image: url(<%= asset_path('apartment_images/'+@apartment.img) %>)"></div>
+<div class="apartment-image form" style="background-image: url(<%= asset_path('assets/apartment_images/'+@apartment.img) %>)"></div>
 <% end %> 
 <div class="fieldset">
             <dl>
@@ -20,7 +20,7 @@
                 </dd>
                 <dt class="label label-default"><%= Apartment.human_attribute_name(:img) %></dt>
                 <dd>
-                    <pre class="prettyprint"><%= link_to @apartment.img, asset_path('apartment_images/'+@apartment.img) , target: '_blank' %></pre>
+                    <pre class="prettyprint"><%= link_to @apartment.img, asset_path('assets/apartment_images/'+@apartment.img) , target: '_blank' %></pre>
                 </dd>
                 <dt class="label label-default"><%= Apartment.human_attribute_name(:email_sent) %></dt>
                 <dd>

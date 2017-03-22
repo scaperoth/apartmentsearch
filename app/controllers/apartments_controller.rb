@@ -84,7 +84,7 @@ class ApartmentsController < ApplicationController
 
         if remote_file_exists? imgurl
 
-            filename = Rails.root.join('public', 'apartment_images', sanitize_filename(params[:apartment][:address]) + '.png')
+            filename = Rails.root.join('public', 'assets', 'apartment_images', sanitize_filename(params[:apartment][:address]) + '.png')
 
             open(filename, 'wb') do |file|
                 file << open(imgurl).read

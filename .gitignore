@@ -16,4 +16,4 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/public/apartment_images/*
+/public/assets/apartment_images/*
