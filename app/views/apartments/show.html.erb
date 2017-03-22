@@ -8,11 +8,11 @@
                 </dd>
                 <dt class="label label-default"><%= Apartment.human_attribute_name(:url) %></dt>
                 <dd>
-                    <pre class="prettyprint"><%= @apartment.url %></pre>
+                    <pre class="prettyprint"> <%= link_to @apartment.url, @apartment.url, target: '_blank' %></pre>
                 </dd>
                 <dt class="label label-default"><%= Apartment.human_attribute_name(:img) %></dt>
                 <dd>
-                    <pre class="prettyprint"><%= @apartment.img %></pre>
+                    <pre class="prettyprint"><%= link_to @apartment.img, 'assets/apartment_images/'+@apartment.img, target: '_blank' %></pre>
                 </dd>
                 <dt class="label label-default"><%= Apartment.human_attribute_name(:email_sent) %></dt>
                 <dd>

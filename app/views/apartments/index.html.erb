@@ -62,8 +62,8 @@
                             <tbody>
                                 <% @apartments.each do |apartment| %>
                                 <tr>
-                                    <td><%= link_to apartment.address, apartment.img %></td>
-                                    <td><%= link_to "Link", apartment.url %></td>
+                                    <td><%= link_to apartment.address, apartment.url, target: '_blank' %></td>
+                                    <td><%= link_to "Link", 'assets/apartment_images/'+apartment.img, target: '_blank' %></td>
                                     <td><%= apartment.email_sent %></td>
                                     <td><%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p') %></td>
                                     <td><%= apartment.updated_at.strftime('%D') %></td>
