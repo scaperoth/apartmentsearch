@@ -70,7 +70,7 @@
                 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix grid">
 
                     <% @apartments.each do |apartment| %>
-                    <div class="box col3 notes-<%= apartment.notes.present? %> email-<%= apartment.email_sent %> viewing-<%= apartment.viewing_date.present? %>" data-price="<%= apartment.price %>" data-viewing-date="<%= apartment.viewing_date.present? ? apartment.viewing_date.strftime('%c') : "2999-10-31" %>">
+                    <div class="box col4 notes-<%= apartment.notes.present? %> email-<%= apartment.email_sent %> viewing-<%= apartment.viewing_date.present? %>" data-price="<%= apartment.price %>" data-viewing-date="<%= apartment.viewing_date.present? ? apartment.viewing_date.strftime('%c') : "2999-10-31" %>">
 
                         <p class="text-muted"><%= number_to_currency apartment.price  %>&nbsp;<% if apartment.email_sent%>|
                             <i data-toggle="tooltip" data-placement="bottom" title="Email sent" class="icon-envelope valign"></i><% end %>&nbsp;

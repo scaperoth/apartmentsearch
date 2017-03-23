@@ -2,7 +2,11 @@ $(function() {
 
     $grid = $('#masonry-container').isotope({
         itemSelector: '.box',
-        layoutMode: 'fitRows',
+        masonry: {
+            // use outer width of grid-sizer for columnWidth
+            columnWidth: 100,
+            fitWidth: true
+        },
         getSortData: {
             price: function(elem) {
                 var price = $(elem).data('price');
