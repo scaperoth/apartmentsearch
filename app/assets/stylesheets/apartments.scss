@@ -18,30 +18,37 @@ a {
 
 .no-padding {
     padding: 0 !important;
-}
 
-.no-bottom-padding {
-    padding-bottom: 0 !important;
-}
+    &-bottom {
+        padding-bottom: 0 !important;
+    }
 
-.no-top-padding {
-    padding-top: 0 !important;
+    &-top {
+        padding-top: 0 !important;
+    }
 }
 
 .no-margin {
     margin: 0 !important;
-}
 
-.no-bottom-margin {
-    margin-bottom: 0 !important;
-}
+    &-bottom {
+        margin-bottom: 0 !important;
+    }
 
-.no-top-margin {
-    margin-top: 0 !important;
+    &-top {
+        margin-top: 0 !important;
+    }
 }
 
 .extra-margin-bottom {
     margin-bottom: 30px;
+}
+
+.valign {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    padding:0;
 }
 /* NAVBAR */
 .navbar.navbar-inverse {
@@ -69,14 +76,15 @@ a {
     /* the bottom margin is the negative value of the footer's height */
 }
 /* HEADER */
-header{
-  background-attachment: fixed;
+header {
+    background-attachment: fixed;
     // -webkit-filter: blur(5px);
     // -moz-filter: blur(5px);
     // -o-filter: blur(5px);
     // -ms-filter: blur(5px);
     // filter: blur(5px);
 }
+
 header .header-content .header-content-inner h1 {
     font-size: 10vw;
 }
@@ -123,11 +131,11 @@ footer {
 }
 
 .box {
-    border-bottom:1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
     p {
         margin: 0;
     }
-
 }
 /* MEDIUM SCREENS */
 @media (min-width: 768px) {

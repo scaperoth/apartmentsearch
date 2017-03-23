@@ -39,12 +39,42 @@
                 </div>
             </div>
         </div>
+        <div class="row" style="margin: 10px 0;">
+            <div class="col-md-4 "style="height:34px;">
+                <div class="col-md-2 valign">
+                    <h3 class="no-margin">Sort</h3>
+                </div>
+                <div class="col-md-8 valign">
+                    <div class="btn-group sort-by-btn-group" role="group" aria-label="Basic example">
+                        <button type="button" data-sort-by="price" class="btn btn-secondary">Price</button>
+                        <button type="button" data-sort-by="viewingDate" class="btn btn-secondary">Viewing Date</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 text-right"style="height:34px;">
+                <div class="col-md-1 valign">
+                    <h3 class="no-margin">Filter</h3>
+                </div>
+                <div class="col-md-9 valign">
+                    <div class="btn-group filter-btn-group" role="group" aria-label="Basic example">
+                        <button type="button" data-filter='*' class="btn btn-secondary">Show all</button>
+                        <button type="button" data-filter='.email-true' class="btn btn-secondary">Email Sent</button>
+                        <button type="button" data-filter='.notes-true' class="btn btn-secondary">Has Notes</button>
+                        <button type="button" data-filter='.viewing-true' class="btn btn-secondary">Has Viewing Date</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
-                <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+                <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix grid">
 
                     <% @apartments.each do |apartment| %>
-                    <div class="box col3">
+                    <div class="box col3 notes-<%= apartment.notes.present? %> email-<%= apartment.email_sent %> viewing-<%= apartment.viewing_date.present? %>" data-price="<%= apartment.price %>" data-viewing-date="<%= apartment.viewing_date.present? ? apartment.viewing_date.strftime('%c') : "2999-10-31" %>">
+
+                        <p class="text-muted"><%= number_to_currency apartment.price  %>&nbsp;<% if apartment.email_sent%>|
+                            <i data-toggle="tooltip" data-placement="bottom" title="Email sent" class="icon-envelope valign"></i><% end %>&nbsp;
+                        </p>
                         <%= link_to apartment do %>
                         <div class="apartment-image" style="background-image: url(<%= apartment.img %>)"></div>
                         <% end %>
@@ -53,13 +83,7 @@
                             <small><%= apartment.address %></small>
                             <% end %>
                         </p>
-                        <p class="text-muted">
-                            <small><%= number_to_currency apartment.price  %></small>
-                        </p>
-                        <p class="text-muted">
-                            <small>Sent email?
-                                <%= apartment.email_sent ? "Yes": "No" %></small>
-                        </p>
+                        <p class="text-muted"></p>
                         <% if apartment.viewing_date.present? %>
                         <p class="text-muted">
                             <small><%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p')  %></small>

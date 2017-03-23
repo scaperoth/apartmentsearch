@@ -7,3 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(email: ENV['ADMIN_USER'], password: ENV['ADMIN_USER_PASS'], password_confirmation: ENV['ADMIN_USER_PASS'], admin: true)
+
+# seed the apartments
+apartments = ActiveSupport::JSON.decode(File.read('db/seed_files/apartments.json'))
+apartments.each do |a|
+    Apartment.create!(a)
+end
