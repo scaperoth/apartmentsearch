@@ -16,6 +16,7 @@
         <!-- end navigation  -->
 
         <div class="primary-content">
+            <%= render 'layouts/messages' %>
             <% if homepage? %>
 
             <%= yield %>
@@ -25,15 +26,17 @@
                     <%= yield %>
                 </section>
             </div>
-            <% end %>
             <div class="push"></div>
+            <% end %>
         </div>
 
         <!-- end content  -->
 
+        <% unless homepage? %>
         <footer>
             <%= render partial: '/elements/footer' %>
         </footer>
+        <% end %>
         <!-- end footer  -->
 
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

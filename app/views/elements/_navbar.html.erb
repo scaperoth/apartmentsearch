@@ -9,23 +9,31 @@
             </button>
             <a class="navbar-brand page-scroll" href="<%= root_url %>#page-top">M&amp;A Apartment Search</a>
         </div>
-        <% if user_signed_in? %>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
 
+                <% if user_signed_in? %>
                 <li>
-                    <a class="page-scroll" href="<%= root_url %>#apartments">Apartments</a>
+                    <a class="page-scroll" href="<%= apartments_path %>">Apartments</a>
                 </li>
                 <li>
-                  <%= link_to destroy_user_session_path, :method => :delete do %>
-                  Sign Out (<%= current_user.email %>)
-                  <% end %> 
+                    <%= link_to destroy_user_session_path, :method => :delete do %>
+                    Sign Out (<%= current_user.email %>)
+                    <% end %>
                 </li>
+            <% else %>
+
+                <li>
+                    <%= link_to "Sign In", new_user_session_path %>
+                </li>
+                <li>
+                    <%= link_to "Register", new_user_registration_path %>
+                </li>
+                <% end %>
             </ul>
         </div>
-        <% end %>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->

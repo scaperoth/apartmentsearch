@@ -128,9 +128,9 @@ p {
     width: 100%;
     min-height: auto;
     overflow-y: hidden;
-    background: url(#{$pattern-overlay}), $primary-color;
-    background: url(#{$pattern-overlay}), -webkit-linear-gradient(to left, $secondary-color, $primary-color);
-    background: url(#{$pattern-overlay}), linear-gradient(to left, $secondary-color, $primary-color);
+    background: url(#{$pattern-overlay}), $home-primary-fade-color;
+    background: url(#{$pattern-overlay}), -webkit-linear-gradient(to left, $home-secondary-fade-color, $home-primary-fade-color);
+    background: url(#{$pattern-overlay}), linear-gradient(to left, $home-secondary-fade-color, $home-primary-fade-color);
     color: #fff;
 }
 header .header-content {
@@ -260,8 +260,8 @@ section.features .feature-item h3 {
 }
 section.features .feature-item i {
     font-size: 80px;
-    background: -webkit-linear-gradient(to left, $secondary-color, $primary-color);
-    background: linear-gradient(to left, $secondary-color, $primary-color);
+    background: -webkit-linear-gradient(to left, $home-secondary-fade-color, $home-primary-fade-color);
+    background: linear-gradient(to left, $home-secondary-fade-color, $home-primary-fade-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

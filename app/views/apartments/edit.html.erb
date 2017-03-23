@@ -1,7 +1,7 @@
 <div class="col-md-6 col-sm-offset-3 extra-margin-bottom">
-<h1 class="no-bottom-padding no-bottom-margin form-title">Editing Apartment</h1>
-<h1 class="no-top-padding no-top-margin"><small><%= @apartment.address %></small></h1>
-<div class="apartment-image form" style="background-image: url(<%= asset_path('assets/apartment_images/'+@apartment.img) %>)"></div>
+<h1 class="no-padding-bottom no-margin-bottom form-title">Editing Apartment</h1>
+<h1 class="no-padding-top no-margin-top"><small><%= @apartment.address %></small></h1>
+<div class="apartment-image form" style="background-image: url(<%= @apartment.img %>)"></div>
 
 <%= render 'form', apartment: @apartment %>
 <br>

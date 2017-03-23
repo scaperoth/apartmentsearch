@@ -1,3 +1,5 @@
+$animation-time: 0.3;
+
 #masonry-container {
     background: #FFF;
     padding: 5px;
@@ -69,11 +71,11 @@
 
 .transitions-enabled.masonry,
 .transitions-enabled.masonry .masonry-brick {
-  -webkit-transition-duration: 0.7s;
-     -moz-transition-duration: 0.7s;
-      -ms-transition-duration: 0.7s;
-       -o-transition-duration: 0.7s;
-          transition-duration: 0.7s;
+  -webkit-transition-duration: #{$animation-time}s;
+     -moz-transition-duration: #{$animation-time}s;
+      -ms-transition-duration: #{$animation-time}s;
+       -o-transition-duration: #{$animation-time}s;
+          transition-duration: #{$animation-time}s;
 }
 
 .transitions-enabled.masonry {
@@ -100,4 +102,42 @@
       -ms-transition-property: none;
        -o-transition-property: none;
           transition-property: none;
+}
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: #{$animation-time}s;
+     -moz-transition-duration: #{$animation-time}s;
+      -ms-transition-duration: #{$animation-time}s;
+       -o-transition-duration: #{$animation-time}s;
+          transition-duration: #{$animation-time}s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
 }

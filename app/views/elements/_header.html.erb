@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-2 col-sm-10 col-sm-offset-1">
+            <div class="header-content">
+                <div class="header-content-inner">
+                    <h1>Helping Matt and Audrey find an apartment since 2017.
+                    </h1>
+                    <% if user_signed_in? %>
+                    <a href="<%= apartments_path %>" class="btn btn-outline btn-xl page-scroll">Get started!</a>
+                <% else %>
+                    <a href="<%= new_user_session_path %>" class="btn btn-outline btn-xl page-scroll">Sign In or Register</a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-sm hidden-xs col-md-5">
+            <div class="earth-container">
+                <div class="sidebg earth">
+                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                    <%= image_tag 'earth-bg_md.png', class: 'img-responsive' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
