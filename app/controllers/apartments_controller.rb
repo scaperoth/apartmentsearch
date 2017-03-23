@@ -85,15 +85,18 @@ class ApartmentsController < ApplicationController
         if remote_file_exists? imgurl
             safe_filename = sanitize_filename(params[:apartment][:address])
 
-            private_path = Rails.root.join('app', 'assets', 'images', 'apartment_images', safe_filename + '.png')
             public_path = Rails.root.join('public', 'assets', 'apartment_images', safe_filename + '.png')
-
-            # place into assets folder for compilation later
-            filename = private_path
-
-            open(filename, 'wb') do |file|
-                file << open(imgurl).read
-            end
+            
+            # working with permenant images 
+            # unless Rails.env.production?
+            #     private_path = Rails.root.join('app', 'assets', 'images', safe_filename + '.png')
+            #     # place into assets folder for compilation later
+            #     filename = private_path
+            # 
+            #     open(filename, 'wb') do |file|
+            #         file << open(imgurl).read
+            #     end
+            # end
 
             # place into public assets folder for public access
             filename = public_path
