@@ -1,49 +1,47 @@
+<div class="col-md-12 extra-margin-bottom">
+    <h1 class="no-padding-bottom no-margin-bottom form-title">Apartment</h1>
+    <h1 class="no-padding-top no-margin-top">
+        <small><%= @apartment.address %></small>
+    </h1>
 
-
-<div class="col-md-6 col-sm-offset-3 extra-margin-bottom">
-<h1 class="no-padding-bottom no-margin-bottom form-title">Apartment</h1>
-<h1 class="no-padding-top no-margin-top"><small><%= @apartment.address %></small></h1>
-<p id="notice"><%= notice %></p>
-
-<%= link_to @apartment.url, target: '_blank' do %>
-<div class="apartment-image form" style="background-image: url(<%= @apartment.img %>)"></div>
-<% end %>
-<div class="fieldset">
-            <dl>
-                <dt class="label label-default"><%= Apartment.human_attribute_name(:address) %></dt>
-                <dd>
-                    <pre class="prettyprint"><%= @apartment.address %></pre>
-                </dd>
-                <dt class="label label-default"><%= Apartment.human_attribute_name(:price) %></dt>
-                <dd>
-                    <pre class="prettyprint"><%= @apartment.price %></pre>
-                </dd>
-                <dt class="label label-default"><%= Apartment.human_attribute_name(:url) %></dt>
-                <dd>
-                    <pre class="prettyprint"> <%= link_to @apartment.url, @apartment.url, target: '_blank' %></pre>
-                </dd>
-                <dt class="label label-default"><%= Apartment.human_attribute_name(:img) %></dt>
-                <dd>
-                    <pre class="prettyprint"><%= link_to 'Image Link', @apartment.img , target: '_blank' %></pre>
-                </dd>
-                <dt class="label label-default"><%= Apartment.human_attribute_name(:email_sent) %></dt>
-                <dd>
-                    <pre class="prettyprint"><%= @apartment.email_sent %></pre>
-                </dd>
-                <dt class="label label-default"><%= Apartment.human_attribute_name(:viewing_date) %></dt>
-                <dd>
-                    <pre class="prettyprint"><%= @apartment.viewing_date %></pre>
-                </dd>
-                <dt class="label label-default"><%= Apartment.human_attribute_name(:notes) %></dt>
-                <dd>
-                    <pre class="prettyprint"><%= @apartment.notes %></pre>
-                </dd>
-            </dl>
+    <div class="col-md-6">
+        <%= link_to @apartment.url, target: '_blank' do %>
+        <div class="apartment-image form" style="background-image: url(<%= @apartment.img %>)"></div>
+        <% end %>
+    </div>
+    <div class="col-md-6">
+        <h3><%= number_to_currency(@apartment.price) %></h3>
+        <p>Status: <%= @apartment.status.present? ? @apartment.status.name : '' %></p>
+        <p>
+            <% if @apartment.email_sent? %>
+            <i class="icon-envelope"></i>
+            Email has been sent.
+        <% else %>
+            No email has been sent yet.
+            <% end %>
+        </p>
+        <p>
+            <% if  @apartment.viewing_date.present? %>
+            Viewing date set for
+            <%=  @apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p') %>
+            <% end %>
+        </p>
+        <p>
+            <%= @apartment.notes %>
+        </p>
+    </div>
+    <div class="row text-center">
+        <div class="col-xs-12">
+            <br>
+            <% if current_user.admin? %>
+            <%= link_to edit_apartment_path(@apartment), class: 'btn btn-default pull-left' do %>
+            <i class='icon-pencil'></i> Edit
+            <% end %>
+            <% end %>
+            <%= link_to apartments_path, class: 'btn btn-default  pull-right' do %>
+            <i class='icon-arrow-left-circle'></i> Back
+            <% end %>
         </div>
-<br>
-<% if current_user.admin? %>
-<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
-<% end %>
-<%= link_to 'Back', apartments_path %>
+    </div>
 </div>
 <br>

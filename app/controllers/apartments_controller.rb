@@ -1,13 +1,12 @@
-
-require 'open-uri'
-
 class ApartmentsController < ApplicationController
-    before_action :authenticate_user!, only: [:show]
-    before_filter only: [:edit, :update, :destroy] do
-        flash[:notice] = 'You do not have permission to access this page.'
-        redirect_to :new_user_session unless current_user && current_user.admin?
+    before_action :authenticate_user!
+    before_filter only: [:edit, :update, :destroy, :changestatus] do
+        if current_user and not current_user.admin?
+          flash[:notice] = 'You do not have permission to access this page.'
+          redirect_to :new_user_session 
+        end
     end
-    before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+    before_action :set_apartment, only: [:show, :edit, :update, :destroy, :changestatus]
 
     # GET /apartments
     # GET /apartments.json
@@ -69,6 +68,17 @@ class ApartmentsController < ApplicationController
         end
     end
 
+    def changestatus
+        abort(params.inspect)
+        respond_to do |format|
+            if current_user.likes @news_item
+                format.json { render json: @news_item.to_json, head: :ok }
+            else
+                format.json { render json: root_path.errors, status: :unprocessable_entity }
+            end
+        end
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -78,55 +88,7 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-
-        # imgurl = params[:apartment][:img]
-
-        # if remote_file_exists? imgurl
-        #     safe_filename = sanitize_filename(params[:apartment][:address])
-
-            # public_path = Rails.root.join('public', 'assets', 'apartment_images', safe_filename + '.png')
-            
-            # working with permenant images 
-            # unless Rails.env.production?
-            #     private_path = Rails.root.join('app', 'assets', 'images', safe_filename + '.png')
-            #     # place into assets folder for compilation later
-            #     filename = private_path
-            # 
-            #     open(filename, 'wb') do |file|
-            #         file << open(imgurl).read
-            #     end
-            # end
-
-            # place into public assets folder for public access
-            # filename = public_path
-            # 
-            # open(filename, 'wb') do |file|
-            #     file << open(imgurl).read
-            # end
-
-        #     params[:apartment][:img] = filename.basename.to_s
-        # end
-
-        params.fetch(:apartment, {}).permit(:address, :url, :img, :email_sent, :viewing_date, :notes, :price)
+        params.fetch(:apartment, {}).permit(:address, :url, :img, :email_sent, :viewing_date, :notes, :price, :status_id)
     end
 
-    # http://stackoverflow.com/questions/1939333/how-to-make-a-ruby-string-safe-for-a-filesystem
-    def sanitize_filename(filename)
-        filename.gsub(/[^0-9A-Z]/i, '_')
-    end
-
-    # http://stackoverflow.com/questions/9543629/verifying-a-remote-image-is-actually-an-image-file-in-ruby
-    def remote_file_exists?(url)
-        url = URI.parse(url)
-        %w(http https).include?(url.scheme)
-    rescue URI::BadURIError
-        false
-    rescue URI::InvalidURIError
-        false
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = (url.scheme == 'https')
-        http.start do |http|
-            return http.head(url.request_uri)['Content-Type'].start_with? 'image'
-        end
-    end
 end

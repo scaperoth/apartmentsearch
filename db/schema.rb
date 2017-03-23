@@ -10,27 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322222330) do
+ActiveRecord::Schema.define(version: 20170323161417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
-  end
 
   create_table "apartments", force: :cascade do |t|
     t.string   "address"
@@ -42,6 +25,14 @@ ActiveRecord::Schema.define(version: 20170322222330) do
     t.datetime "updated_at",                            null: false
     t.text     "notes"
     t.decimal  "price",        precision: 10, scale: 2
+    t.integer  "status_id"
+    t.index ["status_id"], name: "index_apartments_on_status_id", using: :btree
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,4 +53,5 @@ ActiveRecord::Schema.define(version: 20170322222330) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "apartments", "statuses"
 end

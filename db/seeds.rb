@@ -6,10 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(email: ENV['ADMIN_USER'], password: ENV['ADMIN_USER_PASS'], password_confirmation: ENV['ADMIN_USER_PASS'], admin: true)
+User.create(email: ENV['ADMIN_USER'], password: ENV['ADMIN_USER_PASS'], password_confirmation: ENV['ADMIN_USER_PASS'], admin: true)
+
+# seed the statuses
+statuses = ActiveSupport::JSON.decode(File.read('db/seed_files/statuses.json'))
+statuses.each do |s|
+    Status.create(s)
+end
 
 # seed the apartments
 apartments = ActiveSupport::JSON.decode(File.read('db/seed_files/apartments.json'))
 apartments.each do |a|
-    Apartment.create!(a)
+    status = Status.find(a["status"])
+    a["status"] = status
+    Apartment.create(a)
 end
+
+

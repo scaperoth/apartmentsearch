@@ -1,181 +1,22 @@
-<header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-5 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                <div class="header-content">
-                    <div class="header-content-inner">
-                        <h1>Helping Matt and Audrey find an apartment since 2017.
-                        </h1>
-                        <% if user_signed_in? %>
-                        <a href="#apartments" class="btn btn-outline btn-xl page-scroll">Get started!</a>
-                    <% else %>
-                        <a href="<%= new_user_session_path %>" class="btn btn-outline btn-xl page-scroll">Sign In or Register</a>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden-sm hidden-xs col-md-5">
-                <div class="earth-container">
-                    <div class="sidebg earth">
-                        <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                        <%= image_tag 'earth-bg_md.png', class: 'img-responsive' %>
-                    </div>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="section-heading">
+                <h2>Places We've Tried</h2>
+                <p class="text-muted">Zillow, Trulia, HotPads, Craigslist, etc.</p>
+                <hr>
             </div>
         </div>
     </div>
-</header>
-
-<% if user_signed_in? %>
-
-<section id="apartments">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-heading">
-                    <h2>Places We've Tried</h2>
-                    <p class="text-muted">Zillow, Trulia, HotPads, Craigslist, etc.</p>
-                    <hr>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin: 10px 0;">
-            <div class="col-md-4 "style="height:34px;">
-                <div class="col-md-2 valign">
-                    <h3 class="no-margin">Sort</h3>
-                </div>
-                <div class="col-md-8 valign">
-                    <div class="btn-group sort-by-btn-group" role="group" aria-label="Basic example">
-                        <button type="button" data-sort-by="price" class="btn btn-secondary">Price</button>
-                        <button type="button" data-sort-by="viewingDate" class="btn btn-secondary">Viewing Date</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 text-right"style="height:34px;">
-                <div class="col-md-1 valign">
-                    <h3 class="no-margin">Filter</h3>
-                </div>
-                <div class="col-md-9 valign">
-                    <div class="btn-group filter-btn-group" role="group" aria-label="Basic example">
-                        <button type="button" data-filter='*' class="btn btn-secondary">Show all</button>
-                        <button type="button" data-filter='.email-true' class="btn btn-secondary">Email Sent</button>
-                        <button type="button" data-filter='.notes-true' class="btn btn-secondary">Has Notes</button>
-                        <button type="button" data-filter='.viewing-true' class="btn btn-secondary">Has Viewing Date</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix grid">
-
-                    <% @apartments.each do |apartment| %>
-                    <div class="box col4 notes-<%= apartment.notes.present? %> email-<%= apartment.email_sent %> viewing-<%= apartment.viewing_date.present? %>" data-price="<%= apartment.price %>" data-viewing-date="<%= apartment.viewing_date.present? ? apartment.viewing_date.strftime('%c') : "2999-10-31" %>">
-
-                        <p class="text-muted"><%= number_to_currency apartment.price  %>&nbsp;<% if apartment.email_sent%>|
-                            <i data-toggle="tooltip" data-placement="bottom" title="Email sent" class="icon-envelope valign"></i><% end %>&nbsp;
-                        </p>
-                        <%= link_to apartment do %>
-                        <div class="apartment-image" style="background-image: url(<%= apartment.img %>)"></div>
-                        <% end %>
-                        <p class="text-muted">
-                            <%= link_to apartment.url, target: '_blank' do %>
-                            <small><%= apartment.address %></small>
-                            <% end %>
-                        </p>
-                        <p class="text-muted"></p>
-                        <% if apartment.viewing_date.present? %>
-                        <p class="text-muted">
-                            <small><%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p')  %></small>
-                        </p>
-                        <% end %>
-
-                        <% if apartment.notes.present? %>
-                        <p class="text-muted">
-                            <small><%= apartment.notes.html_safe  %></small>
-                        </p>
-                        <% end %>
-                    </div>
-                    <% end %>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="container-fluid">
-                    <div class="row">
-                        <br>
-                        <% if @apartments.empty? %>
-
-                        <p class="text-center">No apartments found yet. Get started by
-                            <%= link_to 'creating a new Apartment', new_apartment_path %></p>
-
-                    <% else %>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th><%= Apartment.human_attribute_name(:address) %></th>
-                                        <th><%= Apartment.human_attribute_name(:img) %></th>
-                                        <th><%= Apartment.human_attribute_name(:price) %></th>
-                                        <th><%= Apartment.human_attribute_name(:email_sent) %></th>
-                                        <th><%= Apartment.human_attribute_name(:viewing_date) %></th>
-                                        <th><%= Apartment.human_attribute_name(:updated_at) %></th>
-                                        <th><%= Apartment.human_attribute_name(:created_at) %></th>
-                                        <th><%=t '.actions', :default => t("helpers.actions") %></th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <% @apartments.each do |apartment| %>
-                                    <tr>
-                                        <td><%= link_to apartment.address, apartment.url, target: '_blank' %></td>
-                                        <td><%= link_to "Link", apartment.img, target: '_blank' %></td>
-                                        <td><%= number_to_currency apartment.price %></td>
-                                        <td><%= apartment.email_sent %></td>
-                                        <td>
-                                            <% if apartment.viewing_date.present? %>
-                                            <%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p') %>
-                                        <% else %>
-                                            N/A
-                                            <% end %></td>
-                                        <td><%= apartment.updated_at.strftime('%D') %></td>
-                                        <td><%= apartment.created_at.strftime('%D') %></td>
-
-                                        <td><%= link_to apartment do %>
-
-                                            <i class="icon-eye text-primary"></i>
-                                            <% end %>
-
-                                            <% if current_user.admin? %>
-                                            <%= link_to edit_apartment_path(apartment) do %>
-                                            <i class="icon-pencil text-primary"></i>
-
-                                            <% end %>
-                                            <%= link_to apartment, method: :delete, data: { confirm: 'Are you sure?' } do %>
-
-                                            <i class="icon-close text-primary"></i>
-
-                                            <% end %>
-                                            <% end %>
-                                        </td>
-                                    </tr>
-                                    <% end %>
-                                </tbody>
-                            </table>
-                        </div>
-                        <br>
-
-                        <%= link_to 'New Apartment', new_apartment_path %>
-
-                        <i class="icon-plus text-primary"></i>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="row text-center" style="margin: 10px 0;">
+        <%= render 'apartments/elements/sort_and_filter' %>
     </div>
-</section>
+    <div class="clearfix"></div>
+    <div class="row">
+        <%= render 'apartments/elements/apartment_masonry', @apartment %>
+    </div>
 
-<% end %>
+    <div class="row">
+        <%= render 'apartments/elements/apartment_table' , @apartment %>
+    </div>
+</div>

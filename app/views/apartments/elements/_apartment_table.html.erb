@@ -1,0 +1,74 @@
+<div class="col-md-12">
+    <div class="container-fluid">
+        <div class="row">
+            <br>
+            <% if @apartments.empty? %>
+
+            <p class="text-center">No apartments found yet. Get started by
+                <%= link_to 'creating a new Apartment', new_apartment_path %></p>
+
+        <% else %>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><%= Apartment.human_attribute_name(:address) %></th>
+                            <th><%= Apartment.human_attribute_name(:img) %></th>
+                            <th><%= Apartment.human_attribute_name(:price) %></th>
+                            <th><%= Apartment.human_attribute_name(:email_sent) %></th>
+                            <th><%= Apartment.human_attribute_name(:status) %></th>
+                            <th><%= Apartment.human_attribute_name(:viewing_date) %></th>
+                            <th><%= Apartment.human_attribute_name(:updated_at) %></th>
+                            <th><%= Apartment.human_attribute_name(:created_at) %></th>
+                            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @apartments.each do |apartment| %>
+                        <tr>
+                            <td><%= link_to apartment.address, apartment.url, target: '_blank' %></td>
+                            <td><%= link_to "Link", apartment.img, target: '_blank' %></td>
+                            <td><%= number_to_currency apartment.price %></td>
+                            <td><%= apartment.email_sent %></td>
+                            <td><%= apartment.status.name %></td>
+                            <td>
+                                <% if apartment.viewing_date.present? %>
+                                <%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p') %>
+                            <% else %>
+                                N/A
+                                <% end %></td>
+                            <td><%= apartment.updated_at.strftime('%D') %></td>
+                            <td><%= apartment.created_at.strftime('%D') %></td>
+
+                            <td><%= link_to apartment do %>
+
+                                <i class="icon-eye text-primary"></i>
+                                <% end %>
+
+                                <% if current_user.admin? %>
+                                <%= link_to edit_apartment_path(apartment) do %>
+                                <i class="icon-pencil text-primary"></i>
+
+                                <% end %>
+                                <%= link_to apartment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+
+                                <i class="icon-close text-primary"></i>
+
+                                <% end %>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+
+            <%= link_to 'New Apartment', new_apartment_path %>
+
+            <i class="icon-plus text-primary"></i>
+            <% end %>
+        </div>
+    </div>
+</div>

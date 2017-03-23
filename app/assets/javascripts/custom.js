@@ -20,6 +20,9 @@ $(function() {
             },
             viewingDate: function(elem) {
                 return Date.parse($(elem).data('viewing-date'));
+            },
+            status: function(elem) {
+                return Date.parse($(elem).data('status'));
             }
         }
     });
@@ -42,4 +45,5 @@ $(function() {
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+
 });
