@@ -86,11 +86,6 @@ class ApartmentsController < ApplicationController
             safe_filename = sanitize_filename(params[:apartment][:address])
 
             private_path = Rails.root.join('app', 'assets', 'images', 'apartment_images', safe_filename + '.png')
-            
-            if  Rails.env.production?
-                private_path = Rails.root.join('assets', 'images', 'apartment_images', safe_filename + '.png')
-            end
-            
             public_path = Rails.root.join('public', 'assets', 'apartment_images', safe_filename + '.png')
 
             # place into assets folder for compilation later
