@@ -15,8 +15,6 @@ $(function() {
                 return $(elem).data('has-notes');
             },
             viewingDate: function(elem) {
-                console.log($(elem).data('viewing-date'))
-                console.log(Date.parse($(elem).data('viewing-date')))
                 return Date.parse($(elem).data('viewing-date'));
             }
         }
