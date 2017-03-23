@@ -9,12 +9,12 @@
             </button>
             <a class="navbar-brand page-scroll" href="<%= root_url %>#page-top">M&amp;A Apartment Search</a>
         </div>
+        <% if user_signed_in? %>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
 
-                <% if user_signed_in? %>
                 <li>
                     <a class="page-scroll" href="<%= root_url %>#apartments">Apartments</a>
                 </li>
@@ -23,9 +23,9 @@
                   Sign Out (<%= current_user.email %>)
                   <% end %> 
                 </li>
-                <% end %>
             </ul>
         </div>
+        <% end %>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
