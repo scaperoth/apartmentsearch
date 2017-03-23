@@ -135,7 +135,10 @@ header {
         .header-content-inner {
             .btn {
                 // background: rgba(255,255,255,0.5);
-                // color: #444;
+                color: #444;
+                &:hover, &:focus{
+                  color:#fff;
+                }
             }
 
             h1 {
