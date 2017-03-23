@@ -46,7 +46,7 @@
                     <% @apartments.each do |apartment| %>
                     <div class="box col3">
                         <%= link_to apartment do %>
-                        <div class="apartment-image" style="background-image: url(<%= asset_path('assets/apartment_images/'+apartment.img) %>)"></div>
+                        <div class="apartment-image" style="background-image: url(<%= apartment.img %>)"></div>
                         <% end %>
                         <p class="text-muted">
                             <%= link_to apartment.url, target: '_blank' do %>
@@ -107,7 +107,7 @@
                                     <% @apartments.each do |apartment| %>
                                     <tr>
                                         <td><%= link_to apartment.address, apartment.url, target: '_blank' %></td>
-                                        <td><%= link_to "Link", asset_path('assets/apartment_images/'+apartment.img), target: '_blank' %></td>
+                                        <td><%= link_to "Link", apartment.img, target: '_blank' %></td>
                                         <td><%= number_to_currency apartment.price %></td>
                                         <td><%= apartment.email_sent %></td>
                                         <td>

@@ -78,14 +78,13 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-        # now we will save the image and get it's new path
 
-        imgurl = params[:apartment][:img]
+        # imgurl = params[:apartment][:img]
 
-        if remote_file_exists? imgurl
-            safe_filename = sanitize_filename(params[:apartment][:address])
+        # if remote_file_exists? imgurl
+        #     safe_filename = sanitize_filename(params[:apartment][:address])
 
-            public_path = Rails.root.join('public', 'assets', 'apartment_images', safe_filename + '.png')
+            # public_path = Rails.root.join('public', 'assets', 'apartment_images', safe_filename + '.png')
             
             # working with permenant images 
             # unless Rails.env.production?
@@ -99,14 +98,14 @@ class ApartmentsController < ApplicationController
             # end
 
             # place into public assets folder for public access
-            filename = public_path
+            # filename = public_path
+            # 
+            # open(filename, 'wb') do |file|
+            #     file << open(imgurl).read
+            # end
 
-            open(filename, 'wb') do |file|
-                file << open(imgurl).read
-            end
-
-            params[:apartment][:img] = filename.basename.to_s
-        end
+        #     params[:apartment][:img] = filename.basename.to_s
+        # end
 
         params.fetch(:apartment, {}).permit(:address, :url, :img, :email_sent, :viewing_date, :notes, :price)
     end
