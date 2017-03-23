@@ -17,15 +17,6 @@
 //= require tether
 //= require bootstrap
 //= require newage
-//= require masonry/masonry.min
-//= require masonry/jquery.infinitescroll.min
-//= require masonry/modernizr-transitions
+//= require isotope/jquery.isotope
 //= require_tree .
 
-$(function() {
-
-    $('#masonry-container').masonry({
-      itemSelector: '.box',
-      gutterWidth: 1
-    });
-});
