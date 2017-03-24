@@ -5,7 +5,7 @@ $(function() {
         masonry: {
             // use outer width of grid-sizer for columnWidth
             columnWidth: 10,
-            gutter: 10
+            gutter: 1
         },
         getSortData: {
             price: function(elem) {
@@ -18,18 +18,26 @@ $(function() {
             notes: '[data-has-notes]',
             viewingDate: '[data-viewing-date]',
             status: '[data-status]',
-            original_order: '[data-status]'
         },
-        sortBy: 'original_order'
+        sortBy: ['status', 'price_per_sqft'],
+        sortAscending: {
+            price_per_sqft: true
+        }
     });
 
 
     // sort items on button click
     $('.sort-by-btn-group').on('click', 'button', function() {
         var sortByValue = $(this).attr('data-sort-by');
-        $grid.isotope({
-            sortBy: sortByValue
-        });
+        if (sortByValue == 'original-order') {
+            $grid.isotope({
+                sortBy: ['status', 'price_per_sqft']
+            });
+        } else {
+            $grid.isotope({
+                sortBy: sortByValue
+            });
+        }
     });
 
 
