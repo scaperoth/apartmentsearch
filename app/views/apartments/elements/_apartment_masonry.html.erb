@@ -25,7 +25,9 @@
             <% end %>
         </p>
         <%= link_to apartment do %>
-        <div class="apartment-image" style="background-image: url(<%= apartment.img %>)"></div>
+        <div class="apartment-image" style="background-image: url(<%= apartment.img %>)">
+        <% if apartment.status.name.eql? 'no' %> <div class="no-go"></div> <% end %>
+        </div>
         <% end %>
         <p class="text-muted">
             <%= link_to apartment.url, target: '_blank' do %>
@@ -35,7 +37,8 @@
         <p class="text-muted"></p>
         <% if apartment.viewing_date.present? %>
         <p class="text-muted">
-            <small><%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p')  %></small>
+            <small><%= apartment.viewing_date.strftime('%a %b %e, %Y @ %l:%M %p')  %>
+            <% if apartment.viewing_date < Time.now %><i class="icon icon-check text-success"></i><% end %></small>
         </p>
         <% end %>
 
