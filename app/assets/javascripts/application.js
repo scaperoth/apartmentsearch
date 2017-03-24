@@ -17,6 +17,6 @@
 //= require tether
 //= require bootstrap
 //= require newage
-//= require isotope/jquery.isotope
+//= require isotope
 //= require_tree .
 
