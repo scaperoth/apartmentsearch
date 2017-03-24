@@ -15,6 +15,7 @@
                             <th><%= Apartment.human_attribute_name(:address) %></th>
                             <th><%= Apartment.human_attribute_name(:img) %></th>
                             <th><%= Apartment.human_attribute_name(:price) %></th>
+                            <th><%= Apartment.human_attribute_name(:square_feet) %></th>
                             <th><%= Apartment.human_attribute_name(:email_sent) %></th>
                             <th><%= Apartment.human_attribute_name(:status) %></th>
                             <th><%= Apartment.human_attribute_name(:viewing_date) %></th>
@@ -30,6 +31,7 @@
                             <td><%= link_to apartment.address, apartment.url, target: '_blank' %></td>
                             <td><%= link_to "Link", apartment.img, target: '_blank' %></td>
                             <td><%= number_to_currency apartment.price %></td>
+                            <td><%= apartment.square_feet %></td>
                             <td><%= apartment.email_sent %></td>
                             <td><%= apartment.status.name %></td>
                             <td>

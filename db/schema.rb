@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323161417) do
+ActiveRecord::Schema.define(version: 20170324173309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 20170323161417) do
     t.string   "img"
     t.boolean  "email_sent"
     t.datetime "viewing_date"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.text     "notes"
     t.decimal  "price",        precision: 10, scale: 2
     t.integer  "status_id"
+    t.integer  "square_feet",                           default: 0
     t.index ["status_id"], name: "index_apartments_on_status_id", using: :btree
   end
 

@@ -1,5 +1,5 @@
 $(function() {
-
+    
     $grid = $('#masonry-container').isotope({
         itemSelector: '.box',
         masonry: {
@@ -11,6 +11,14 @@ $(function() {
             price: function(elem) {
                 var price = $(elem).data('price');
                 return parseFloat(price.replace(/[\(\)]/g, ''));
+            },
+            sqft: function(elem) {
+                var sqft = $(elem).data('sqft');
+                return parseInt(sqft);
+            },
+            price_per_sqft: function(elem) {
+                var price_per_sqft = $(elem).data('price-per-sqft');
+                return price_per_sqft;
             },
             email: function(elem) {
                 return $(elem).data('email-sent');
@@ -25,6 +33,11 @@ $(function() {
                 return Date.parse($(elem).data('status'));
             }
         }
+    });
+
+    // default sort: 
+    $grid.isotope({
+        sortBy: 'price_per_sqft'
     });
 
     // sort items on button click

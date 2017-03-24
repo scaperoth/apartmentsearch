@@ -10,8 +10,9 @@
         <% end %>
     </div>
     <div class="col-md-6">
-        <h3><%= number_to_currency(@apartment.price) %></h3>
-        <p>Status: <%= @apartment.status.present? ? @apartment.status.name : '' %></p>
+        <h3 class="no-margin-bottom"><%= number_to_currency(@apartment.price) %> | <%= @apartment.square_feet.present? ? @apartment.square_feet : '----' %> sqft</h3>
+        <% if not @apartment.square_feet.zero? %> <small><%= number_to_currency(@apartment.price/@apartment.square_feet) %> per square foot.</small> <% end %>
+        <p style="margin-top:10px;">Status: <%= @apartment.status.present? ? @apartment.status.name : '' %></p>
         <p>
             <% if @apartment.email_sent? %>
             <i class="icon-envelope"></i>
@@ -30,14 +31,19 @@
             <%= @apartment.notes %>
         </p>
     </div>
+    <br>
     <div class="row text-center">
         <div class="col-xs-12">
-            <br>
             <% if current_user.admin? %>
-            <%= link_to edit_apartment_path(@apartment), class: 'btn btn-default pull-left' do %>
+            <%= link_to edit_apartment_path(@apartment), class: 'btn btn-success pull-left' do %>
             <i class='icon-pencil'></i> Edit
             <% end %>
             <% end %>
+            <% if current_user.admin? %>
+            <%= link_to new_apartment_path(), class: 'btn btn-primary' do %>
+            <i class='icon-plus'></i> Create New
+            <% end %>
+            <% end %> 
             <%= link_to apartments_path, class: 'btn btn-default  pull-right' do %>
             <i class='icon-arrow-left-circle'></i> Back
             <% end %>

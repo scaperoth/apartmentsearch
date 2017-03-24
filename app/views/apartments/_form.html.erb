@@ -16,6 +16,7 @@
     <%= f.input :url %>
     <%= f.input :img %>
     <%= f.input :price %>
+    <%= f.input :square_feet %>
     <%= f.input :email_sent %>
     <%= f.input :status_id, collection: Status.all.order(:id).collect {|s| [ s.name, s.id ] }, prompt: "Choose a Status" %>
     <%= f.input :viewing_date, :include_blank => true  %>

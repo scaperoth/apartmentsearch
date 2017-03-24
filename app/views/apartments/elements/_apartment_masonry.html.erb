@@ -4,11 +4,19 @@
     <div
         class="box col3 col-xs-12 %> notes-<%= apartment.notes.present? %> email-<%= apartment.email_sent %> viewing-<%= apartment.viewing_date.present? %>"
         data-price="<%= apartment.price %>"
+        data-price-per-sqft="<%= (not apartment.square_feet.zero?) ? apartment.price/apartment.square_feet : 999999 %>"
+        data-sqft="<%= apartment.square_feet %>"
         data-status="<%= apartment.status.id %>"
         data-viewing-date="<%= apartment.viewing_date.present? ? apartment.viewing_date.strftime('%c') : "
         2999-10-31" %>">
 
-        <p class="text-muted"><%= number_to_currency apartment.price  %>
+        <p class="text-muted"><%= number_to_currency apartment.price  %>&nbsp;|
+            <% if not apartment.square_feet.zero? %>
+            <%= apartment.square_feet  %>
+        <% else %>
+            ----
+            <% end %>
+            sqft
             <% if apartment.email_sent %>&nbsp;|
             <i data-toggle="tooltip" data-placement="bottom" title="Email sent" class="icon-envelope valign"></i>
             <% end %>
