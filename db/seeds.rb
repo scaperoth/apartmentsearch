@@ -22,4 +22,12 @@ apartments.each do |a|
     Apartment.create(a)
 end
 
+# to fix broken unique identifier error
+# sql = "SELECT setval('apartments_id_seq', (SELECT max(id) FROM apartments))"
+# ActiveRecord::Base.connection.execute(sql)
+# sql = "SELECT setval('statuses_id_seq', (SELECT max(id) FROM statuses))"
+# ActiveRecord::Base.connection.execute(sql)
+# sql = "SELECT setval('users_id_seq', (SELECT max(id) FROM users))"
+# ActiveRecord::Base.connection.execute(sql)
+
 

@@ -4,8 +4,8 @@ $(function() {
         itemSelector: '.box',
         masonry: {
             // use outer width of grid-sizer for columnWidth
-            columnWidth: 100,
-            fitWidth: true
+            columnWidth: 10,
+            gutter: 10
         },
         getSortData: {
             price: function(elem) {

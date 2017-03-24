@@ -6,9 +6,9 @@
                     <h1>Helping Matt and Audrey find an apartment since 2017.
                     </h1>
                     <% if user_signed_in? %>
-                    <a href="<%= apartments_path %>" class="btn btn-outline btn-xl page-scroll">Get started!</a>
+                    <a href="<%= apartments_path %>" class="btn btn-outline btn-xl">Get started!</a>
                 <% else %>
-                    <a href="<%= new_user_session_path %>" class="btn btn-outline btn-xl page-scroll">Sign In or Register</a>
+                    <a href="<%= new_user_session_path %>" class="btn btn-outline btn-xl">Sign In or Register</a>
                     <% end %>
                 </div>
             </div>

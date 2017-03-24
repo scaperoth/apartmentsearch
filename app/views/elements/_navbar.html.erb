@@ -7,7 +7,7 @@
                 Menu
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand page-scroll" href="<%= user_signed_in? ? apartments_path : root_path %>">M&amp;A Apartment Search</a>
+            <a class="navbar-brand " href="<%= user_signed_in? ? apartments_path : root_path %>">M&amp;A Apartment Search</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -16,7 +16,7 @@
 
                 <% if user_signed_in? %>
                 <li>
-                    <a class="page-scroll" href="<%= apartments_path %>">Apartments</a>
+                    <a href="<%= apartments_path %>">Apartments</a>
                 </li>
                 <li>
                     <%= link_to destroy_user_session_path, :method => :delete do %>
