@@ -25,4 +25,6 @@ Setting up enviornment variables is different in each OS. For Mac it will be in 
 - ```bundle exec rake db:create```
 - ```bundle exec rake db:migrate```
 - ```bundle exec rake db:seed```
- 
+# Run
+- ```rails s```
+- your app will be deployed to (here)[http://localhost:3000]
