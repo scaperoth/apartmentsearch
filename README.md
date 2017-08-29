@@ -19,7 +19,7 @@ You will need to setup a postgres user (default is postgres) and password. If yo
 > The user and password for your postgres db will be used in the environment variables below 
 
 ### Add Environment Variables
-Setting up enviornment variables is different in each OS. For Mac it will be in the ~/.bash_profile file. In Linux it will be in ~/.bashrc. For windows, you can [Google it](http://lmgtfy.com/?q=windows+environment+variables)
+Setting up enviornment variables is different in each OS. For Mac it will be in the ```~/.bash_profile``` file. In Linux it will be in ```~/.bashrc```. For Windows, you can [Google it](http://lmgtfy.com/?q=windows+environment+variables)
 - ```POSTGRESQL_USERNAME```
 - ```POSTGRESQL_PASS```
 - ```ADMIN_USER``` (email)
