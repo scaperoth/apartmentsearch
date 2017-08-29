@@ -12,14 +12,14 @@
     - https://www.postgresql.org/download/windows/
 - Linux (Debian):
     - ```sudo apt-get install postgresql```
-> I would also suggest installing a postgresql gui tool like [postgresapp](https://postgresapp.com/documentation/gui-tools.html) or [pgAdmin](https://www.pgadmin.org/)
+> I would also suggest installing a postgresql gui tool like [postgresapp](https://postgresapp.com/documentation/gui-tools.html){:target="_blank"} or [pgAdmin](https://www.pgadmin.org/){:target="_blank"}
 ### Setup Postgres Access
 You will need to setup a postgres user (default is postgres) and password. If you do not know how to do this, there are lots of resources online that can help you based on your OS. The GUIs will come in handy for this. 
 
 > The user and password for your postgres db will be used in the environment variables below 
 
 ### Add Environment Variables
-Setting up enviornment variables is different in each OS. For Mac it will be in the ~/.bash_profile file. In Linux it will be in ~/.bashrc. For windows, you can [Google it](http://lmgtfy.com/?q=windows+environment+variables)
+Setting up enviornment variables is different in each OS. For Mac it will be in the ~/.bash_profile file. In Linux it will be in ~/.bashrc. For windows, you can [Google it](http://lmgtfy.com/?q=windows+environment+variables){:target="_blank"}
 - ```POSTGRESQL_USERNAME```
 - ```POSTGRESQL_PASS```
 - ```ADMIN_USER``` (email)
@@ -32,4 +32,4 @@ Setting up enviornment variables is different in each OS. For Mac it will be in 
 - ```bundle exec rake db:seed```
 # Run
 - ```rails s```
-- your app will be deployed to [here](http://localhost:3000)
+- your app will be deployed to [here](http://localhost:3000){:target="_blank"}
