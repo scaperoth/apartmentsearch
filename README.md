@@ -12,7 +12,7 @@
         - https://www.postgresql.org/download/windows/
     - Linux (Debian):
         - ```sudo apt-get install postgresql```
-> I would also suggest installing a postgresql gui tool like [postgresapp](https://postgresapp.com/documentation/gui-tools.html)
+> I would also suggest installing a postgresql gui tool like [postgresapp](https://postgresapp.com/documentation/gui-tools.html) or [pgAdmin](https://www.pgadmin.org/)
 - Set up environment variables
     - ```POSTGRESQL_USERNAME```
     - ```POSTGRESQL_PASS```
