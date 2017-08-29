@@ -34,3 +34,4 @@ From a terminal or command line, go to the root of the apartmentsearch project a
 # Run
 - ```rails s```
 - your app will be deployed to [here](http://localhost:3000)
+- Log in using the ```ADMIN_USER``` and ```ADMIN_USER_PASS``` you set up before
