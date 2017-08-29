@@ -14,7 +14,7 @@
     - ```sudo apt-get install postgresql```
 > I would also suggest installing a postgresql gui tool like [postgresapp](https://postgresapp.com/documentation/gui-tools.html) or [pgAdmin](https://www.pgadmin.org/)
 ### Add Environment Variables
-Setting up enviornment variables is different in each OS. For Mac it will be in the ~/.bash_profile file. In Linux it will be in ~/.bashrc. For windows, you can (Google it)[http://lmgtfy.com/?q=windows+environment+variables]
+Setting up enviornment variables is different in each OS. For Mac it will be in the ~/.bash_profile file. In Linux it will be in ~/.bashrc. For windows, you can [Google it](http://lmgtfy.com/?q=windows+environment+variables)
 - ```POSTGRESQL_USERNAME```
 - ```POSTGRESQL_PASS```
 - ```ADMIN_USER``` (email)
