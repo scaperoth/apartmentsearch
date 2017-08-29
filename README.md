@@ -8,11 +8,11 @@
     - Mac:
         - ```brew update```
         - ```brew install postgresql```
-        - I would also suggest installing a gui like https://postgresapp.com/documentation/gui-tools.html
     - Windows:
         - https://www.postgresql.org/download/windows/
     - Linux (Debian):
         - ```sudo apt-get install postgresql```
+> I would also suggest installing a postgresql gui tool like [postgresapp](https://postgresapp.com/documentation/gui-tools.html)
 - Set up environment variables
     - ```POSTGRESQL_USERNAME```
     - ```POSTGRESQL_PASS```
