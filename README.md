@@ -20,7 +20,7 @@ Setting up enviornment variables is different in each OS. For Mac it will be in 
 - ```ADMIN_USER``` (email)
 - ```ADMIN_USER_PASS``` (longer than 6 characters)
 - ```APARTMENTSEARCH_DATABASE_PASSWORD``` (optional - only for production environment)
-#Install 
+# Install 
 - ```bundle install``` (this may take a minute)
 - ```bundle exec rake db:create```
 - ```bundle exec rake db:migrate```
